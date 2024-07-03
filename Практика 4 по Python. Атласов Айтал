@@ -1,0 +1,26 @@
+import os
+
+def find_maximums(filename):
+    max_nums = []
+    with open(filename, 'r') as f:
+        for line in f:
+            numbers = list(map(int, line.split()))
+            max_nums.append(max(numbers))
+    return max_nums
+
+def write_range(filename, a, b):
+    with open(filename, 'w') as f:
+        for i in range(a, b):
+            f.write(str(i) + '\n')
+
+def count_files(directory):
+    return len([f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))])
+
+def open_in_notepad(filename):
+    os.system(f'notepad {filename}')
+
+if __name__ == "__main__":
+    print(find_maximums('numbers.txt'))
+    write_range('range.txt', 1, 10)
+    print(count_files('.'))
+    open_in_notepad('main.py')
